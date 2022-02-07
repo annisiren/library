@@ -14,7 +14,7 @@ str.strip()
 
 
 ##################
-# Loops
+# LOOPS
 ## FOR
 fruits = ["apple", "banana", "cherry"]
 for x in fruits:
@@ -44,26 +44,27 @@ while i < len(colors):
     print(colors[i])
     i += 1
 
+##################
+# FUNCTION
+## *args //unknown amount of arguments
+
+def myfunc(*args):
+    return sum(args)*.05
+
+myfunc(40,60,20)
+
+## **kwargs //keyword arguments
+def myfunc(**kwargs):
+    if 'fruit' in kwargs:
+        print(f"My favorite fruit is {kwargs['fruit']}")  # review String Formatting and f-strings if this syntax is unfamiliar
+    else:
+        print("I don't like fruit")
+
+myfunc(fruit='pineapple')
 
 ##################
-# Open file
-with open(file_name, 'w') as f: # 'w', 'r', 'wb', 'a'
-    f.readline()
-f.close()
-
-
-# Save object to file
-import pickle
-with open(file_name, 'wb') as f:
-    pickle.dump(text, f, pickle.HIGHEST_PROTOCOL)
-
-##################
-# Doesn't use regular codex
-import codecs
-with codecs.open(file_name, 'w', encoding='utf-8') as f:
-    f.write(text)
-
-
+# MISC
+## time
 import time
 
 start_time = time.time()
