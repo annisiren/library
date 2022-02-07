@@ -47,7 +47,6 @@ while i < len(colors):
 ##################
 # FUNCTION
 ## *args //unknown amount of arguments
-
 def myfunc(*args):
     return sum(args)*.05
 
@@ -61,6 +60,12 @@ def myfunc(**kwargs):
         print("I don't like fruit")
 
 myfunc(fruit='pineapple')
+
+##LAMBDA
+#lambda var: expression, list
+my_nums = [1,2,3,4,5]
+list(map(lambda num: num ** 2, my_nums))
+list(filter(lambda n: n % 2 == 0, my_nums))
 
 ##################
 # MISC
