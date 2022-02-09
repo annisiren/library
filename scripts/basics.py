@@ -68,16 +68,96 @@ list(map(lambda num: num ** 2, my_nums))
 list(filter(lambda n: n % 2 == 0, my_nums))
 
 ##################
-# MISC
-## time
-import time
+## MAP, REDUCE, FILTER, ZIP, ENUMERATE
+## MAP
 
-start_time = time.time()
-print("My program took", time.time() - start_time, "to run")
+a = [1,2,3,4]
+b = [5,6,7,8]
+c = [9,10,11,12]
+
+list(map(lambda x,y,z:x+y+z,a,b,c))
+
+## REDUCE
+from functools import reduce
+lst =[47,11,42,13]
+reduce(lambda x,y: x+y,lst)
+
+## FILTER
+lst =range(20)
+list(filter(lambda x: x%2==0,lst))
+
+## ZIP
+x = [1,2,3]
+y = [4,5,6]
+
+# Zip the lists together
+list(zip(x,y))
+
+##ENUMERATE
+months = ['March','April','May','June']
+
+list(enumerate(months,start=3))
 
 
+##################
+# BUILT IN FUNCTIONS
+## all() & any()
+lst = [True,True,False,True]
+all(lst) #False
+any(lst) # True
+
+## complex() - complex numbers
+# Create 2+3j
+complex(2,3)
 
 
+##################
+# DECORATOR
+def new_decorator(func):
+
+    def wrap_func():
+        print("Code would be here, before executing the func")
+
+        func()
+
+        print("Code here will execute after the func()")
+
+    return wrap_func
+
+def func_needs_decorator():
+    print("This function is in need of a Decorator")
+
+@new_decorator
+def func_needs_decorator():
+    print("This function is in need of a Decorator")
+
+##################
+# GENERATOR
+# Generator function for the cube of numbers (power of 3)
+def gencubes(n):
+    for num in range(n):
+        yield num**3
+        # no return
+for x in gencubes(10):
+    print(x)
+
+# built-in functions
+# next()
+def simple_gen():
+    for x in range(3):
+        yield x
+# Assign simple_gen
+g = simple_gen()
+print(next(g))
+
+# iter()
+s = 'hello'
+
+#Iterate over string
+for let in s:
+    print(let)
+s_iter = iter(s)
+next(s_iter)
 
 # Sources:
 ## https://treyhunner.com/2016/04/how-to-loop-with-indexes-in-python/
