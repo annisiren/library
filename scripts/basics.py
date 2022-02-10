@@ -9,8 +9,31 @@ str = ['Hello', 'World']
 ' '.join(str)
 
 # Remove all whitespace
-
 str.strip()
+
+str.upper()
+str.lower()
+
+str.count('o') # returns the number of occurrences, without overlap
+str.find('o')  # returns the starting index position of the first occurence
+
+str.center(20,'z')
+
+'hello\thi'.expandtabs()
+
+# CHECKS
+str.isalnum()
+str.isalpha()
+str.islower()
+str.isspace()
+str.istitle()
+str.isupper()
+str.endswith('o')
+
+# BUILT IN REGEX
+
+str.split('e')
+str.partition('l')
 
 
 ##################
@@ -60,56 +83,6 @@ def myfunc(**kwargs):
         print("I don't like fruit")
 
 myfunc(fruit='pineapple')
-
-##LAMBDA
-#lambda var: expression, list
-my_nums = [1,2,3,4,5]
-list(map(lambda num: num ** 2, my_nums))
-list(filter(lambda n: n % 2 == 0, my_nums))
-
-##################
-## MAP, REDUCE, FILTER, ZIP, ENUMERATE
-## MAP
-
-a = [1,2,3,4]
-b = [5,6,7,8]
-c = [9,10,11,12]
-
-list(map(lambda x,y,z:x+y+z,a,b,c))
-
-## REDUCE
-from functools import reduce
-lst =[47,11,42,13]
-reduce(lambda x,y: x+y,lst)
-
-## FILTER
-lst =range(20)
-list(filter(lambda x: x%2==0,lst))
-
-## ZIP
-x = [1,2,3]
-y = [4,5,6]
-
-# Zip the lists together
-list(zip(x,y))
-
-##ENUMERATE
-months = ['March','April','May','June']
-
-list(enumerate(months,start=3))
-
-
-##################
-# BUILT IN FUNCTIONS
-## all() & any()
-lst = [True,True,False,True]
-all(lst) #False
-any(lst) # True
-
-## complex() - complex numbers
-# Create 2+3j
-complex(2,3)
-
 
 ##################
 # DECORATOR
