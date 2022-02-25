@@ -6,6 +6,11 @@ from sklearn.model_selection import train_test_split # Used to split dataset
 from sklearn.preprocessing import StandardScaler # Used in feature scaling
 
 from sklearn.linear_model import LogisticRegression # Used for Logistic Regression Classification
+from sklearn.neighbors import KNeighborsClassifier # Used for KNN Classification
+from sklearn.svm import SVC # Used for SVM Classification
+from sklearn.naive_bayes import GaussianNB # Used for Naive Bayes Classification
+from sklearn.tree import DecisionTreeClassifier # Used for Decision Tree Classification
+from sklearn.ensemble import RandomForestClassifier # Used for Random Forest Classification
 
 from sklearn.metrics import confusion_matrix # Used for Confusion Matrix
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score, hamming_loss, jaccard_score, matthews_corrcoef # Different metrics
@@ -39,7 +44,37 @@ def scaling(X_train, X_test, i = 0):
 def logistic_regression_classification(X_train, y_train, randomState = 0):
     classifier = LogisticRegression(random_state = randomState)
     classifier.fit(X_train, y_train)
+    return classifier
 
+# TRAINING K NEAREST NEIGHBORS MODEL ON TRAINING SET
+def knn_classification(X_train, y_train, nNeighbors = 5, metric_ = '', p_ = 2):
+    classifier = KNeighborsClassifier(n_neighbors = nNeighbors, metric = metric_, p = p_)
+    classifier.fit(X_train, y_train)
+    return classifier
+
+def svm_classification(X_train, y_train, kernel_ = 'linear', randomState = 0):
+    classifier = SVC(kernel = kernel_, random_state = randomState)
+    classifier.fit(X_train, y_train)
+    return classifier
+
+def kernel_svm_classification(X_train, y_train, kernel_ = 'rbf', randomState = 0):
+    classifier = SVC(kernel = kernel_, random_state = randomState)
+    classifier.fit(X_train, y_train)
+    return classifier
+
+def naive_bayes_classification(X_train, y_train):
+    classifier = GaussianNB()
+    classifier.fit(X_train, y_train)
+    return classifier
+
+def decision_tree_classification(X_train, y_train, criterion_ = 'entropy', randomState = 0):
+    classifier = DecisionTreeClassifier(criterion = criterion_, random_state = randomState)
+    classifier.fit(X_train, y_train)
+    return classifier
+
+def random_forest_classification(X_train, y_train, nEstimators = 10, criterion_ = 'entropy', randomState = 0):
+    classifier = RandomForestClassifier(n_estimators = nEstimators, criterion = criterion_, random_state = randomState)
+    classifier.fit(X_train, y_train)
     return classifier
 
 ############################
@@ -60,8 +95,7 @@ def predict_lrc_test(classifier, X_test, y_test):
 
 
 ############################
-# CONFUSION MATRIX
-#
+# METRICS
 def confusion_matrix_(y_test, y_pred):
     cm = confusion_matrix(y_test, y_pred)
     # print(cm)
